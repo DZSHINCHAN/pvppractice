@@ -2,7 +2,7 @@
   "enabled": true,
   "bot-account": {
     "enabled": true,
-    "username": "boi",
+    "username": "bot",
     "password": "",
     "type": "offline"
   },
