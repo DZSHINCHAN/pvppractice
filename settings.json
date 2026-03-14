@@ -1,4 +1,3 @@
-cat > /workspaces/codespaces-blank/pvppractice/settings.json << 'EOF'
 {
   "enabled": true,
   "bot-account": {
@@ -28,7 +27,7 @@ cat > /workspaces/codespaces-blank/pvppractice/settings.json << 'EOF'
       "sneak": true
     },
     "chat-messages": {
-      "enabled": false,
+      "enabled": true,
       "repeat": true,
       "repeat-delay": 60,
       "messages": [
@@ -69,4 +68,3 @@ cat > /workspaces/codespaces-blank/pvppractice/settings.json << 'EOF'
     }
   }
 }
-EOF
