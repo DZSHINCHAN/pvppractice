@@ -15,18 +15,18 @@ app.listen(8000, () => {
   console.log('server started');
 });
 
-// ✅ Keep-alive ping every 2 minutes
+// Keep-alive ping every 1 minute
 setInterval(() => {
-  https.get('https://your-bot.onrender.com', (res) => {
+  https.get('https://pvppractice.onrender.com', (res) => {
     console.log(`[KeepAlive] Pinged self. Status: ${res.statusCode}`);
   }).on('error', (err) => {
     console.log(`[KeepAlive] Error: ${err.message}`);
   });
-}, 2 * 60 * 1000);
+}, 1 * 60 * 1000);
 
 function createBot() {
 
-   if (!config['bot-account']['enabled']) {
+   if (!config.enabled) {
       console.log('\x1b[31m[AfkBot] Bot is disabled in settings.json. Not connecting.\x1b[0m');
       return;
    }
@@ -117,7 +117,7 @@ function createBot() {
       bot.on('end', () => {
          setTimeout(() => {
             createBot();
-         }, config.utils['auto-recconect-delay']);
+         }, config.utils['auto-reconnect-delay']);
       });
    }
 
@@ -129,10 +129,18 @@ function createBot() {
       )
    );
 
-   // ✅ Fixed syntax error here
    bot.on('error', (err) =>
       console.log(`\x1b[31m[ERROR] ${err.message}`, '\x1b[0m')
    );
 }
+
+process.on('SIGTERM', () => {
+   console.log('[System] SIGTERM received - staying alive...');
+});
+
+process.on('SIGINT', () => {
+   console.log('[System] Manual stop requested. Exiting...');
+   process.exit(0);
+});
 
 createBot();
