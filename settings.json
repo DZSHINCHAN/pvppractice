@@ -1,7 +1,8 @@
 {
+  "enabled": true,
   "name": "AFK Bot",
   "bot-account": {
-    "username": "imgonnacream",
+    "username": "myboi",
     "password": "",
     "type": "offline"
   },
